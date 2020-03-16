@@ -12,15 +12,18 @@ import {
 } from 'react-router-dom';
 
 class App extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      stations: [],
+      
+    }
+  };
+  setStations = (stations)=>{
+    this.setState({stations:stations})
+  }
   render(){
   return (
-    // <div className="App">
-    //   <header className="App-header">
-    //    <Home />
-    //    <AllStation />
-    //    <User />
-    //   </header>
-    // </div>
     <Router>
       <nav>
         <Link to="/">Home</Link>{' '}
@@ -30,7 +33,9 @@ class App extends React.Component {
 
       <div>
         <Route exact path="/" component={Home} />
-        <Route path='/AllStation' component={AllStation} />
+        <Route path='/AllStation' component={()=> <AllStation 
+                     stations={this.state.stations}
+                     setStations={this.setStations} />} />
         <Route path="/User" component={User} />
       </div>
       </Router>
