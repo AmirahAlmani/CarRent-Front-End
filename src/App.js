@@ -1,10 +1,10 @@
 import React from "react";
 import "./App.css";
 import Home from "./home";
-import Stations from "./stations/components/Stations";
+import Stations from "./stations/components/stations";
 import SelectedStation from "./stations/components/selectedStation"
 import User from "./stations/components/user";
-import Cars from "./stations/components/allcars";
+// import Cars from "./stations/components/viewcars";
 import { getAllStation } from "./stations/api";
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
@@ -15,7 +15,8 @@ class App extends React.Component {
 
     this.state = {
       station: [],
-      car: []
+      stationName:'',
+      stationLocation: ''
     };
   }
   componentDidMount() {
@@ -28,16 +29,19 @@ class App extends React.Component {
         console.log("API ERROR:", error);
       });
   }
+  oneStaion = (stationName, stationLocation)=>{
+    this.setState({stationName:stationName})
+    this.setState({stationLocation:stationLocation})
+  }
+  // setCar = car => {
+  //   this.setState({ car: car });
+  // };
 
-  setCar = car => {
-    this.setState({ car: car });
-  };
-
-  toFiltervalue = Filterstation => {
-    this.setState({
-      station: Filterstation
-    });
-  };
+  // toFiltervalue = Filterstation => {
+  //   this.setState({
+  //     station: Filterstation
+  //   });
+  // };
 
   render() {
     return (
@@ -57,10 +61,10 @@ class App extends React.Component {
             <Route path="/AllStation"
               component={() => (
                 <Stations
+                  oneStaion={this.oneStaion}
                   station={this.state.station}
-                  toFiltervalue={this.toFiltervalue}
-                  setCar={this.setCar}
-                  car={this.state.car}
+                
+                  
                 />
               )}
             />
@@ -70,15 +74,20 @@ class App extends React.Component {
             <Route
               path="/selected-station"
               component={() => (
-                 <SelectedStation  station={this.state.station}/> )}
+                 <SelectedStation  
+                //  station={this.state.station}
+                //  oneStaion={this.oneStaion}
+                 stationName ={this.state.stationName}
+                 stationLocation ={this.state.stationLocation}
+                 /> )}
 
              />
-            <Route
+            {/* <Route
               path="/AllStation/Cars"
               component={() => (
                 <Cars setCar={this.setCar} car={this.state.car} />
               )}
-            />
+            /> */}
         </Router>
       </div>
     );
