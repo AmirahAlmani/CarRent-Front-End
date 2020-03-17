@@ -1,45 +1,87 @@
-import React from 'react';
-import './App.css';
-// import apiURL from './apiCongig'
-import Home from "./home"
-import AllStation from "./stations/components/allStations"
-import User from "./stations/components/user"
-import Cars from "./stations/components/user"
-import {
-  BrowserRouter as Router,
-  Route,
-  Link
-} from 'react-router-dom';
+import React from "react";
+import "./App.css";
+import Home from "./home";
+import Stations from "./stations/components/Stations";
+import SelectedStation from "./stations/components/selectedStation"
+import User from "./stations/components/user";
+import Cars from "./stations/components/allcars";
+import { getAllStation } from "./stations/api";
+
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 class App extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.state = {
-      stations: [],
-      
-    }
-  };
-  setStations = (stations)=>{
-    this.setState({stations:stations})
-  }
-  render(){
-  return (
-    <Router>
-      <nav>
-        <Link to="/">Home</Link>{' '}
-        <Link to="/AllStation">Find a Station</Link>{' '}
-        <Link to="/User">User</Link>
-      </nav>
 
+    this.state = {
+      station: [],
+      car: []
+    };
+  }
+  componentDidMount() {
+    getAllStation()
+      .then(response => {
+        console.log('rerender here');
+        this.setState({ station:response.data.stations});
+      })
+      .catch(error => {
+        console.log("API ERROR:", error);
+      });
+  }
+
+  setCar = car => {
+    this.setState({ car: car });
+  };
+
+  toFiltervalue = Filterstation => {
+    this.setState({
+      station: Filterstation
+    });
+  };
+
+  render() {
+    return (
       <div>
-        <Route exact path="/" component={Home} />
-        <Route path='/AllStation' component={()=> <AllStation 
-                     stations={this.state.stations}
-                     setStations={this.setStations} />} />
-        <Route path="/User" component={User} />
+        <header>CarRent</header>
+
+        <Router>
+          <nav className="navBar">
+            <Link to="/">Home</Link>
+            {" || "}
+            <Link to="/AllStation">Find a Station</Link>
+            {" || "}
+            <Link to="/User">User</Link>
+          </nav>
+
+            <Route exact path="/" component={Home} />
+            <Route path="/AllStation"
+              component={() => (
+                <Stations
+                  station={this.state.station}
+                  toFiltervalue={this.toFiltervalue}
+                  setCar={this.setCar}
+                  car={this.state.car}
+                />
+              )}
+            />
+
+            <Route path="/User" component={User} />
+             {/* router to a station detials  */}
+            <Route
+              path="/selected-station"
+              component={() => (
+                 <SelectedStation  station={this.state.station}/> )}
+
+             />
+            <Route
+              path="/AllStation/Cars"
+              component={() => (
+                <Cars setCar={this.setCar} car={this.state.car} />
+              )}
+            />
+        </Router>
       </div>
-      </Router>
-  );
-}
+    );
+  }
 }
 export default App;

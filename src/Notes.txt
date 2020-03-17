@@ -1,0 +1,13 @@
+App
+   home
+   stations(find a station) 
+         components 
+              allstations
+              station
+                selected station 
+              allcars
+              car
+              user
+        api 
+
+   user
