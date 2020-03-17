@@ -78,18 +78,11 @@ class User extends React.Component {
 
 
 
-                    <button onClick={this.props.addNewUser}>submit</button>
+                    <button onClick={this.props.submition}>submit</button>
 
                 </form>
 
-                {/* <div>
-                    {this.props.addNewUser.map(item => {
-                        return (
-                            <p>{item}</p>
-                        )
-                    })}
-
-                </div> */}
+                {/* onClick={this.props.addNewUser}  */}
 
             </div>
 
