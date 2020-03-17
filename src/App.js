@@ -1,10 +1,9 @@
 import React from "react";
 import "./App.css";
 import Home from "./home";
-import Stations from "./stations/components/Stations";
-import SelectedStation from "./stations/components/selectedStation"
+import Stations from "./stations/components/stations";
+import SelectedStation from "./stations/components/selectedStation";
 import User from "./stations/components/user";
-import Cars from "./stations/components/allcars";
 import { getAllStation } from "./stations/api";
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
@@ -21,8 +20,8 @@ class App extends React.Component {
   componentDidMount() {
     getAllStation()
       .then(response => {
-        console.log('rerender here');
-        this.setState({ station:response.data.stations});
+        console.log("rerender here");
+        this.setState({ station: response.data.stations });
       })
       .catch(error => {
         console.log("API ERROR:", error);
@@ -53,32 +52,26 @@ class App extends React.Component {
             <Link to="/User">User</Link>
           </nav>
 
-            <Route exact path="/" component={Home} />
-            <Route path="/AllStation"
-              component={() => (
-                <Stations
-                  station={this.state.station}
-                  toFiltervalue={this.toFiltervalue}
-                  setCar={this.setCar}
-                  car={this.state.car}
-                />
-              )}
-            />
+          <Route exact path="/" component={Home} />
+          <Route
+            path="/AllStation"
+            component={() => (
+              <Stations
+                station={this.state.station}
+                setCar={this.setCar}
+                car={this.state.car}
+              />
+            )}
+          />
 
-            <Route path="/User" component={User} />
-             {/* router to a station detials  */}
-            <Route
-              path="/selected-station"
-              component={() => (
-                 <SelectedStation  station={this.state.station}/> )}
+          <Route path="/User" component={User} />
+          {/* router to a station detials  */}
+          <Route path="/selected-station" component={SelectedStation} />
 
-             />
-            <Route
-              path="/AllStation/Cars"
-              component={() => (
-                <Cars setCar={this.setCar} car={this.state.car} />
-              )}
-            />
+          {/* <Route
+            path="Cars"
+            component={() => <Cars setCar={this.setCar} car={this.state.car} />}
+          /> */}
         </Router>
       </div>
     );

@@ -1,17 +1,8 @@
 import React from "react";
 import Car from "./car";
-import { getAllCars } from "../api";
+import { getAllStation } from "../api";
 
 class Cars extends React.Component {
-  componentDidMount() {
-    getAllCars()
-      .then(response => {
-        this.props.setCar(response.data.stations);
-      })
-      .catch(error => {
-        console.log("API ERROR:", error);
-      });
-  }
   render() {
     let allcars = <h4>No Cars !</h4>;
     if (this.props.car.length > 0) {
