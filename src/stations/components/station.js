@@ -8,7 +8,7 @@ class Station extends React.Component {
       <div className="styles">
         <a href="./car" onClick="">
           <Link to="/cars">
-            <h3>{this.props.name}</h3>{" "}
+            <h3>{this.props.name} Link</h3>{" "}
           </Link>
         </a>
 
