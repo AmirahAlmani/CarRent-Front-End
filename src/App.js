@@ -1,9 +1,11 @@
 import React from "react";
 import "./App.css";
 import Home from "./home";
-import AllStation from "./stations/components/allStations";
+import Stations from "./stations/components/Stations";
+import SelectedStation from "./stations/components/selectedStation"
 import User from "./stations/components/user";
 import Cars from "./stations/components/allcars";
+import { getAllStation } from "./stations/api";
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
@@ -16,9 +18,17 @@ class App extends React.Component {
       car: []
     };
   }
-  setStation = station => {
-    this.setState({ station: station });
-  };
+  componentDidMount() {
+    getAllStation()
+      .then(response => {
+        console.log('rerender here');
+        this.setState({ station:response.data.stations});
+      })
+      .catch(error => {
+        console.log("API ERROR:", error);
+      });
+  }
+
   setCar = car => {
     this.setState({ car: car });
   };
@@ -43,14 +53,11 @@ class App extends React.Component {
             <Link to="/User">User</Link>
           </nav>
 
-          <div>
             <Route exact path="/" component={Home} />
-            <Route
-              path="/AllStation"
+            <Route path="/AllStation"
               component={() => (
-                <AllStation
+                <Stations
                   station={this.state.station}
-                  setStation={this.setStation}
                   toFiltervalue={this.toFiltervalue}
                   setCar={this.setCar}
                   car={this.state.car}
@@ -59,13 +66,19 @@ class App extends React.Component {
             />
 
             <Route path="/User" component={User} />
+             {/* router to a station detials  */}
+            <Route
+              path="/selected-station"
+              component={() => (
+                 <SelectedStation  station={this.state.station}/> )}
+
+             />
             <Route
               path="/AllStation/Cars"
               component={() => (
                 <Cars setCar={this.setCar} car={this.state.car} />
               )}
             />
-          </div>
         </Router>
       </div>
     );
