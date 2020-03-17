@@ -1,11 +1,11 @@
 import React from "react";
 import "./App.css";
+import apiURL from "./apiConfig";
 import Home from "./home";
-import Stations from "./stations/components/stations";
-import SelectedStation from "./stations/components/selectedStation";
 import User from "./stations/components/user";
+import Stations from "./stations/components/Stations";
+import SelectedStation from "./stations/components/selectedStation";
 import { getAllStation } from "./stations/api";
-
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 class App extends React.Component {
@@ -14,9 +14,24 @@ class App extends React.Component {
 
     this.state = {
       station: [],
-      car: []
+      stationName: "",
+      stationLocation: ""
     };
+
+    this.state = {
+      name: " ",
+      phone: " ",
+      email: " ",
+      password: " ",
+      cardNmuber: " ",
+      cardName: " ",
+      cardExpiredDate: " ",
+      cvv: " ",
+      addNewUser: []
+    };
+    console.log("My API url is : ", apiURL);
   }
+
   componentDidMount() {
     getAllStation()
       .then(response => {
@@ -27,51 +42,133 @@ class App extends React.Component {
         console.log("API ERROR:", error);
       });
   }
-
-  setCar = car => {
-    this.setState({ car: car });
+  oneStaion = (stationName, stationLocation) => {
+    this.setState({ stationName: stationName });
+    this.setState({ stationLocation: stationLocation });
   };
 
-  toFiltervalue = Filterstation => {
+  addNewUser = e => {
+    e.preventDefault();
+
     this.setState({
-      station: Filterstation
+      addNewUser: [
+        ...this.state.addNewUser,
+        [
+          this.state.name,
+          this.state.phone,
+          this.state.email,
+          this.state.password,
+          this.state.cardNmuber,
+          this.state.cardName,
+          this.state.cardExpiredDate,
+          this.state.cvv
+        ]
+      ],
+      name: "",
+      phone: "",
+      email: "",
+      password: "",
+      cardNmuber: "",
+      cardName: "",
+      cardExpiredDate: "",
+      cvv: ""
     });
+    console.log(this.state.addNewUser);
+    console.log("add user");
+  };
+
+  setUser = users => {
+    this.setState({ users: users });
+  };
+  //create new arrticle
+  handleName = e => {
+    this.setState({ name: e.target.value });
+    console.log(this.state.name);
+  };
+  handlePhone = e => {
+    this.setState({ phone: e.target.value });
+    console.log(this.state.phone);
+  };
+  handleEmail = e => {
+    this.setState({ email: e.target.value });
+    console.log(this.state.email);
+  };
+
+  handlePassword = e => {
+    this.setState({ password: e.target.value });
+    console.log(this.state.password);
+  };
+
+  handleCardNmuber = e => {
+    this.setState({ cardNmuber: e.target.value });
+    console.log(this.state.cardNmuber);
+  };
+
+  handleCardName = e => {
+    this.setState({ cardName: e.target.value });
+    console.log(this.state.cardName);
+  };
+
+  handleCardExpiredDate = e => {
+    this.setState({ cardExpiredDate: e.target.value });
+    console.log(this.state.cardExpiredDate);
+  };
+
+  handleCVV = e => {
+    this.setState({ cvv: e.target.value });
+    console.log(this.state.cvv);
   };
 
   render() {
     return (
       <div>
-        <header>CarRent</header>
-
         <Router>
-          <nav className="navBar">
-            <Link to="/">Home</Link>
-            {" || "}
-            <Link to="/AllStation">Find a Station</Link>
-            {" || "}
+          <nav>
+            <Link to="/">Home</Link>{" "}
+            <Link to="/AllStation">Find a Station</Link>{" "}
             <Link to="/User">User</Link>
           </nav>
 
-          <Route exact path="/" component={Home} />
-          <Route
-            path="/AllStation"
-            component={() => (
-              <Stations
-                station={this.state.station}
-                setCar={this.setCar}
-                car={this.state.car}
-              />
-            )}
-          />
+          <div>
+            <Route exact path="/" component={Home} />
+            <Route
+              path="/AllStation"
+              component={() => (
+                <Stations
+                  oneStaion={this.oneStaion}
+                  station={this.state.station}
+                />
+              )}
+            />
+            <Route
+              path="/User"
+              render={() => (
+                <User
+                  handleName={this.handleName}
+                  handlePhone={this.handlePhone}
+                  handleEmail={this.handleEmail}
+                  handlePassword={this.handlePassword}
+                  handleCardNmuber={this.handleCardNmuber}
+                  handleCardName={this.handleCardName}
+                  handleCardExpiredDate={this.handleCardExpiredDate}
+                  handleCVV={this.handleCVV}
+                  addNewUser={this.addNewUser}
+                />
+              )}
+            />
 
-          <Route path="/User" component={User} />
-          {/* router to a station detials  */}
-          <Route path="/selected-station" component={SelectedStation} />
-
-          {/* <Route
-            path="Cars"
-            component={() => <Cars setCar={this.setCar} car={this.state.car} />}
-          /> */}
+            <Route
+              path="/selected-station"
+              component={() => (
+                <SelectedStation
+                  //  station={this.state.station}
+                  //  oneStaion={this.oneStaion}
+                  stationName={this.state.stationName}
+                  stationLocation={this.state.stationLocation}
+                />
+              )}
+            />
+          </div>
         </Router>
       </div>
     );

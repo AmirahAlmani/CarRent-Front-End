@@ -1,6 +1,6 @@
 import React from "react";
 import Car from "./car";
-import { getAllStation } from "../api";
+// import { getAllStation } from "../api";
 
 class Cars extends React.Component {
   render() {

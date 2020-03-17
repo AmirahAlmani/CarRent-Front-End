@@ -1,16 +1,15 @@
 import React from 'react';
 
 class Home extends React.Component {
-    render(){
+  render() {
     return (
       <>
-          <p>
-            Welcom to car Rent
+        <p>
+          Welcom to car Rent
           </p>
-
       </>
-        
+
     );
   }
-  }
-  export default Home;
+}
+export default Home;
