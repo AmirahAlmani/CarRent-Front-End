@@ -5,7 +5,8 @@ class SelectedStation extends React.Component {
         return(
             <>
             <p>station info</p>
-            {this.props.name}
+            {this.props.stationName} <br/>
+            {this.props.stationLocation}
             </>
         )
     }
