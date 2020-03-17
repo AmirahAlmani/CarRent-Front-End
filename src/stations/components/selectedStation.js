@@ -1,11 +1,11 @@
 import React from "react";
 
 class SelectedStation extends React.Component {
-    render(){
-        return(
+    render() {
+        return (
             <>
-            <p>station info</p>
-            {this.props.name}
+                <p>station info</p>
+                {this.props.name}
             </>
         )
     }
