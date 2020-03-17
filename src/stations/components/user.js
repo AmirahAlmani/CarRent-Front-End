@@ -5,7 +5,6 @@ class User extends React.Component {
     render() {
         return (
             <div>
-
                 <form>
 
                     <lable>Name:</lable>

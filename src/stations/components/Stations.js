@@ -15,7 +15,6 @@ class Stations extends React.Component {
     }
 
 
-
     render() {
         let allstation = <h4>No Stations!</h4>;
         if (this.props.station.length > 0) {

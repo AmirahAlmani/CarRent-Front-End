@@ -7,7 +7,6 @@ class Home extends React.Component {
         <p>
           Welcom to car Rent
           </p>
-
       </>
 
     );
