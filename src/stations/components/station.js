@@ -6,7 +6,7 @@ class Station extends React.Component {
   render() {
     return (
       <div className="styles">
-        <a href="./car">
+        <a href="./car" onClick="">
           <Link to="/cars">
             <h3>{this.props.name}</h3>{" "}
           </Link>

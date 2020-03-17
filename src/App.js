@@ -52,13 +52,15 @@ class App extends React.Component {
                   station={this.state.station}
                   setStation={this.setStation}
                   toFiltervalue={this.toFiltervalue}
+                  setCar={this.setCar}
+                  car={this.state.car}
                 />
               )}
             />
 
             <Route path="/User" component={User} />
             <Route
-              path="/Cars"
+              path="/AllStation/Cars"
               component={() => (
                 <Cars setCar={this.setCar} car={this.state.car} />
               )}
