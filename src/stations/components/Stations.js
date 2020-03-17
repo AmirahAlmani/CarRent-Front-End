@@ -15,6 +15,7 @@ class Stations extends React.Component {
     }
 
 
+
     render() {
         let allstation = <h4>No Stations!</h4>;
         if (this.props.station.length > 0) {
@@ -23,10 +24,11 @@ class Stations extends React.Component {
                     <Station
                         name={station.name}
                         location={station.location}
-                        car={station.cars}
+                        cars={station.cars}
                         key={index}
                         id={station._id}
                         stationDetalis={this.stationDetalis}
+                        oneStaion={this.props.oneStaion}
                     />
 
                 );

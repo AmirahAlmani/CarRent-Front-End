@@ -4,7 +4,8 @@ import apiURL from './apiConfig';
 import Home from "./home";
 import User from "./stations/components/user";
 import Stations from "./stations/components/Stations";
-// import { addNewUser } from './stations/api';
+import SelectedStation from "./stations/components/selectedStation"
+import { getAllStation } from "./stations/api";
 import {
   BrowserRouter as Router,
   Route,
@@ -16,6 +17,12 @@ class App extends React.Component {
 
   constructor(props) {
     super(props);
+
+    this.state = {
+      station: [],
+      stationName: '',
+      stationLocation: ''
+    };
 
     this.state = {
       // name: " ",
@@ -44,7 +51,29 @@ class App extends React.Component {
     console.log('My API url is : ', apiURL)
   }
 
+  componentDidMount() {
+    getAllStation()
+      .then(response => {
+        console.log('rerender here');
+        this.setState({ station: response.data.stations });
+      })
+      .catch(error => {
+        console.log("API ERROR:", error);
+      });
+  }
+  oneStaion = (stationName, stationLocation) => {
+    this.setState({ stationName: stationName })
+    this.setState({ stationLocation: stationLocation })
+  }
+  // setCar = car => {
+  //   this.setState({ car: car });
+  // };
 
+  // toFiltervalue = Filterstation => {
+  //   this.setState({
+  //     station: Filterstation
+  //   });
+  // };
 
   addNewUser = e => {
 
@@ -189,7 +218,16 @@ class App extends React.Component {
 
           <div>
             <Route exact path="/" component={Home} />
-            <Route path='/Stations' component={Stations} />
+            <Route path="/AllStation"
+              component={() => (
+                <Stations
+                  oneStaion={this.oneStaion}
+                  station={this.state.station}
+
+
+                />
+              )}
+            />
             <Route path="/User"
 
               render={() => (
@@ -211,6 +249,17 @@ class App extends React.Component {
 
             />
 
+            <Route
+              path="/selected-station"
+              component={() => (
+                <SelectedStation
+                  //  station={this.state.station}
+                  //  oneStaion={this.oneStaion}
+                  stationName={this.state.stationName}
+                  stationLocation={this.state.stationLocation}
+                />)}
+
+            />
 
           </div>
         </Router>
