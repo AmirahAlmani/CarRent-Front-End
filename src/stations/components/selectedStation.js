@@ -1,14 +1,20 @@
 import React from "react";
-
+import ViewCars from "./viewcars";
 class SelectedStation extends React.Component {
   render() {
-    console.log("location", this.props.location);
-
+    let allCars = <p>no Cars at this Station</p>;
+    if (this.props.cars.length > 0) {
+      allCars = this.props.cars.map((car, index) => {
+        return <ViewCars brand={car.brand} type={car.type} key={index} />;
+      });
+    }
     return (
       <>
-        <h2> Hi </h2>
-        <h2>{this.props.location.state.stationInfo.Name}</h2>
-        {/* <p>{this.props.location.state.locations.location}</p> */}
+        <p>station info</p>
+        {this.props.stationName} <br />
+        {this.props.stationLocation} <br />
+        <ViewCars />
+        {allCars}
       </>
     );
   }
