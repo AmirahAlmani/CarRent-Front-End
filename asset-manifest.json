@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/CarRent-Front-End/static/css/main.2d209ab9.chunk.css",
+    "main.js": "/CarRent-Front-End/static/js/main.f01a2e9d.chunk.js",
+    "main.js.map": "/CarRent-Front-End/static/js/main.f01a2e9d.chunk.js.map",
+    "runtime-main.js": "/CarRent-Front-End/static/js/runtime-main.5910c189.js",
+    "runtime-main.js.map": "/CarRent-Front-End/static/js/runtime-main.5910c189.js.map",
+    "static/js/2.53eebb8a.chunk.js": "/CarRent-Front-End/static/js/2.53eebb8a.chunk.js",
+    "static/js/2.53eebb8a.chunk.js.map": "/CarRent-Front-End/static/js/2.53eebb8a.chunk.js.map",
+    "index.html": "/CarRent-Front-End/index.html",
+    "precache-manifest.b1a1ee5a5d4fac76fd744896ee909e88.js": "/CarRent-Front-End/precache-manifest.b1a1ee5a5d4fac76fd744896ee909e88.js",
+    "service-worker.js": "/CarRent-Front-End/service-worker.js",
+    "static/css/main.2d209ab9.chunk.css.map": "/CarRent-Front-End/static/css/main.2d209ab9.chunk.css.map",
+    "static/js/2.53eebb8a.chunk.js.LICENSE.txt": "/CarRent-Front-End/static/js/2.53eebb8a.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.5910c189.js",
+    "static/js/2.53eebb8a.chunk.js",
+    "static/css/main.2d209ab9.chunk.css",
+    "static/js/main.f01a2e9d.chunk.js"
+  ]
+}
