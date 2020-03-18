@@ -2,9 +2,10 @@ import React from 'react';
 import './App.css';
 import apiURL from './apiConfig';
 import Home from "./home";
-import AllStation from "./stations/components/Stations";
 import User from "./stations/components/user";
-// import { addNewUser } from './stations/api';
+import Stations from "./stations/components/Stations";
+import SelectedStation from "./stations/components/selectedStation"
+import { getAllStation, addNewUser } from "./stations/api";
 import {
   BrowserRouter as Router,
   Route,
@@ -18,32 +19,45 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      // name: " ",
-      // phone: " ",
-      // email: " ",
-      // password: " ",
-      // payment: {
-      //   cardNmuber: " ",
-      //   cardName: " ",
-      //   cardExpiredDate: " ",
-      //   cvv: " ",
-      // },
+      station: [],
+      stationName: '',
+      stationLocation: ''
+    };
 
-
+    this.state = {
       name: " ",
       phone: " ",
       email: " ",
       password: " ",
-      cardNmuber: " ",
-      cardName: " ",
-      cardExpiredDate: " ",
-      cvv: " ",
+      payment: {
+        cardNmuber: " ",
+        cardName: " ",
+        cardExpiredDate: " ",
+        cvv: " "
+      },
       addNewUser: []
 
     };
     console.log('My API url is : ', apiURL)
   }
 
+  componentDidMount() {
+    getAllStation()
+      .then(response => {
+        console.log('rerender here');
+        this.setState({ station: response.data.stations });
+      })
+      .catch(error => {
+        console.log("API ERROR:", error);
+      });
+  }
+  oneStaion = (stationName, stationLocation, cars) => {
+    this.setState({
+      stationName: stationName,
+      stationLocation: stationLocation,
+      car: cars
+    })
+  }
 
 
   addNewUser = e => {
@@ -86,6 +100,7 @@ class App extends React.Component {
   }
   //create new arrticle 
   handleName = (e) => {
+
     this.setState({ name: e.target.value })
     console.log(this.state.name);
 
@@ -126,53 +141,58 @@ class App extends React.Component {
   }
 
 
-  // submition = (e) => {
+  submition = (e) => {
 
-  //   console.log(`the User created`);
-  //   addNewUser(
-  //     {
-  //       user:
-  //       {
-  //         name: this.state.name,
-  //         phone: this.state.phone,
-  //         email: this.state.email,
-  //         password: this.state.password,
-  //         cardNmuber: this.state.cardNmuber,
-  //         cardName: this.state.cardName,
-  //         cardExpiredDate: this.state.cardExpiredDate,
-  //         cvv: this.state.cvv
-  //       }
-  //     }
-  //   )
-  //     .then((response) => {
-  //       this.setState({
-  //         user: [
-  //           ...this.state.user,
-  //           {
-  //             name: this.state.name,
-  //             phone: this.state.phone,
-  //             email: this.state.email,
-  //             password: this.state.password,
-  //             cardNmuber: this.state.cardNmuber,
-  //             cardName: this.state.cardName,
-  //             cardExpiredDate: this.state.cardExpiredDate,
-  //             cvv: this.state.cvv
-  //           }
-  //         ],
-  //         name: '',
-  //         phone: '',
-  //         email: '',
-  //         password: '',
-  //         cardNmuber: '',
-  //         cardName: '',
-  //         cardExpiredDate: '',
-  //         cvv: ''
-
-  //       })
-  //     }).catch((error) => {
-  //       console.log('api add new user error :', error)
-  //     })
-  // }
+    console.log(`the User created`);
+    addNewUser(
+      {
+        user:
+        {
+          name: this.state.name,
+          phone: this.state.phone,
+          email: this.state.email,
+          password: this.state.password,
+          payment: {
+            cardNmuber: this.state.cardNmuber,
+            cardName: this.state.cardName,
+            cardExpiredDate: this.state.cardExpiredDate,
+            cvv: this.state.cvv
+          }
+        }
+      }
+    )
+      .then((response) => {
+        this.setState({
+          user: [
+            ...this.state.user,
+            {
+              name: this.state.name,
+              phone: this.state.phone,
+              email: this.state.email,
+              password: this.state.password,
+              payment: {
+                cardNmuber: this.state.cardNmuber,
+                cardName: this.state.cardName,
+                cardExpiredDate: this.state.cardExpiredDate,
+                cvv: this.state.cvv
+              }
+            }
+          ],
+          name: '',
+          phone: '',
+          email: '',
+          password: '',
+          payment: {
+            cardNmuber: '',
+            cardName: '',
+            cardExpiredDate: '',
+            cvv: ''
+          }
+        })
+      }).catch((error) => {
+        console.log('api add new user error :', error)
+      })
+  }
 
 
 
@@ -189,9 +209,17 @@ class App extends React.Component {
 
           <div>
             <Route exact path="/" component={Home} />
-            <Route path='/AllStation' component={AllStation} />
-            <Route path="/User"
+            <Route path="/AllStation"
+              component={() => (
+                <Stations
+                  oneStaion={this.oneStaion}
+                  station={this.state.station}
 
+
+                />
+              )}
+            />
+            <Route path="/User"
 
               render={() => (
 
@@ -206,12 +234,24 @@ class App extends React.Component {
                   handleCardExpiredDate={this.handleCardExpiredDate}
                   handleCVV={this.handleCVV}
                   addNewUser={this.addNewUser}
+                  submition={this.submition}
 
                 />
               )}
 
             />
 
+            <Route
+              path="/selected-station"
+              component={() => (
+                <SelectedStation
+                  //  station={this.state.station}
+                  //  oneStaion={this.oneStaion}
+                  stationName={this.state.stationName}
+                  stationLocation={this.state.stationLocation}
+                />)}
+
+            />
 
           </div>
         </Router>

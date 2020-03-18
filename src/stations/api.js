@@ -1,23 +1,17 @@
-import apiUrl from '../apiConfig';
-import axios from 'axios';
+import apiURL from "../apiConfig";
+import axios from "axios";
 
-
-// INDEX, SHOW, CREATE, UPDATE, DESTROY
-
-// Get All Articles
-const getAllUser = () => {
-    return axios.get(`${apiUrl}/user`);
+const getAllStation = () => {
+  return axios.get(`${apiURL}/stations`);
 };
 
-// Delete Article by ID
-const deleteUserByID = (id) => {
-    return axios.delete(`${apiUrl}/user/${id}`);
-}
+const getAllCars = () => {
+  return axios.get(`${apiURL}/cars`);
+};
 
 const addNewUser = (user) => {
-    console.log('addNewUser', user)
-    return axios.post(`${apiUrl}/user`, user);
+  console.log('addNewUser', user)
+  return axios.post(`${apiURL}/user`, user);
 }
-export { getAllUser, deleteUserByID, addNewUser };
 
-// export { getAllArticles, deleteArticleByID };
+export { getAllStation, getAllCars, addNewUser };
