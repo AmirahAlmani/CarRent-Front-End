@@ -1,27 +1,31 @@
 import React from "react";
-import { Link } from "react-router-dom";
-class Station extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-        }
-    }
-    clickStaion = (event) => {
-        //     // event.preventDefault();
-        //     // this.props.stationDetalis(this.props.id);
-        console.log('hi', this.props.id)
-        // this.setState({stationName: this.props.name})
-        this.props.oneStaion(this.props.name, this.props.location, this.props.cars)
+import Station from "./station";
+class Stations extends React.Component {
+    stationDetalis = (stationId) => {
+        console.log(stationId, `is the station id`)
     }
     render() {
+        let allstation = <h4>No Stations!</h4>;
+        if (this.props.station.length > 0) {
+            allstation = this.props.station.map((station, index) => {
+                return (
+                    <Station
+                        name={station.name}
+                        location={station.location}
+                        cars={station.cars}
+                        key={index}
+                        id={station._id}
+                        stationDetalis={this.stationDetalis}
+                        oneStaion={this.props.oneStaion}
+                    />
+                );
+            });
+        }
         return (
-            <div className="styles">
-                <Link to="/selected-Station" onClick={this.clickStaion} >
-                    {this.props.name}
-                </Link> <br />
-                {this.props.location} <br />
-            </div>
-        )
+            <>
+                {allstation}
+            </>
+        );
     }
 }
-export default Station;
+export default Stations;

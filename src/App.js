@@ -3,7 +3,7 @@ import './App.css';
 import apiURL from './apiConfig';
 import Home from "./home";
 import User from "./stations/components/user";
-import Stations from "./stations/components/Stations";
+import Stations from "./stations/components/stations";
 import SelectedStation from "./stations/components/selectedStation"
 import { getAllStation, addNewUser } from "./stations/api";
 import {
@@ -21,8 +21,10 @@ class App extends React.Component {
     this.state = {
       station: [],
       stationName: '',
-      stationLocation: ''
-    };
+      stationLocation: '',
+      car: [],
+      stationId: '',
+    }
 
     this.state = {
       name: " ",
@@ -42,6 +44,9 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    this.getAll()
+  }
+  getAll = () => {
     getAllStation()
       .then(response => {
         console.log('rerender here');
@@ -51,11 +56,13 @@ class App extends React.Component {
         console.log("API ERROR:", error);
       });
   }
-  oneStaion = (stationName, stationLocation, cars) => {
+
+  oneStaion = (stationName, stationLocation, cars, stationId) => {
     this.setState({
       stationName: stationName,
       stationLocation: stationLocation,
-      car: cars
+      car: cars,
+      stationId: stationId
     })
   }
 
@@ -245,17 +252,17 @@ class App extends React.Component {
               path="/selected-station"
               component={() => (
                 <SelectedStation
-                  //  station={this.state.station}
-                  //  oneStaion={this.oneStaion}
                   stationName={this.state.stationName}
                   stationLocation={this.state.stationLocation}
+                  cars={this.state.car}
+                  setCars={this.setCars}
+                  stationId={this.state.stationId}
+                  getAll={this.getAll}
                 />)}
-
             />
 
           </div>
         </Router>
-
 
       </div>
     );
