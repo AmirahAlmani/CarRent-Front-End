@@ -51,9 +51,12 @@ class App extends React.Component {
         console.log("API ERROR:", error);
       });
   }
-  oneStaion = (stationName, stationLocation) => {
-    this.setState({ stationName: stationName })
-    this.setState({ stationLocation: stationLocation })
+  oneStaion = (stationName, stationLocation, cars) => {
+    this.setState({
+      stationName: stationName,
+      stationLocation: stationLocation,
+      car: cars
+    })
   }
 
 
