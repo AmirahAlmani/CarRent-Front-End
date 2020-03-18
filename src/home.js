@@ -1,15 +1,119 @@
 import React from 'react';
 
-class Home extends React.Component {
+
+// class Home extends React.Component {
+//   render() {
+//     return (
+//       <div className='popup'>
+//         <div className='popup_inner'>
+//           <h1>{this.props.text}</h1>
+//           <button onClick={this.props.closePopup}>close me</button>
+//         </div>
+//       </div>
+//     );
+//   }
+// }
+// class Home extends React.Component {
+//   constructor() {
+//     super();
+//     this.handleClick = this.handleClick.bind(this);
+//     this.state = {
+//       showPopup: false
+
+//     };
+
+//   }
+//   togglePopup() {
+
+
+//     this.setState({
+//       showPopup: !this.state.showPopup
+//     });
+
+//   }
+
+//   handleClick() {
+
+//     const rand = Math.floor(Math.random() * 10000000) + 1;
+
+//     this.setState({ random: this.state.random + rand });
+//   }
+
+
+//   render() {
+//     return (
+//       <div className='app'>
+//         <h1>hihi</h1>
+//         <button onClick={this.togglePopup.bind(this)}>show popup</button>
+
+//         {this.state.showPopup ?
+//           <Popup
+//             text="{this.state.handleClick}"
+//             closePopup={this.togglePopup.bind(this)}
+//           />
+//           : null
+//         }
+//       </div>
+//     );
+//   }
+// };
+
+// export default Home;
+
+
+class Popup extends React.Component {
   render() {
     return (
-      <>
-        <p>
-          Welcom to car Rent
-          </p>
-      </>
-
+      <div className='popup'>
+        <div className='popup_inner'>
+          <h1>{this.props.text}</h1>
+          <button onClick={this.props.closePopup}>close me</button>
+        </div>
+      </div>
     );
   }
 }
+class Home extends React.Component {
+  constructor() {
+    super();
+    this.handleClick = this.handleClick.bind(this);
+    this.state = { random: 10000000 };
+
+    this.state = {
+      showPopup: false
+    };
+  }
+  togglePopup() {
+    this.setState({
+      showPopup: !this.state.showPopup
+    });
+  }
+
+  handleClick() {
+
+    const rand = Math.floor(Math.random() * 10000000) + 1;
+
+    this.setState({ random: this.state.random + rand });
+  }
+
+
+  render() {
+    return (
+      <div className='app'>
+        <h1>hihi</h1>
+        <button onClick={this.togglePopup.bind(this)}>show popup</button>
+
+        {this.state.showPopup ?
+          <Popup
+            text={this.handleClick}
+            closePopup={this.togglePopup.bind(this)}
+          />
+          : null
+        }
+      </div>
+    );
+  }
+};
+
+
 export default Home;

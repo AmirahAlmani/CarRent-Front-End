@@ -24,9 +24,11 @@ class App extends React.Component {
       stationLocation: '',
       car: [],
       stationId: '',
+
     }
 
     this.state = {
+      houre: '',
       name: " ",
       phone: " ",
       email: " ",
@@ -202,7 +204,19 @@ class App extends React.Component {
   }
 
 
-
+  //selecte hours 
+  handleChangeThreeHours = (e) => {
+    console.log(e.target.value);
+    this.setState({ hours: e.target.value });
+  }
+  handleChangeSixHours = (e) => {
+    console.log(e.target.value);
+    this.setState({ hours: e.target.value });
+  }
+  handleChangeTwelveHours = (e) => {
+    console.log(e.target.value);
+    this.setState({ hours: e.target.value });
+  }
 
   render() {
     return (
@@ -242,6 +256,10 @@ class App extends React.Component {
                   handleCVV={this.handleCVV}
                   addNewUser={this.addNewUser}
                   submition={this.submition}
+                  hours={this.state.hours}
+                  handleChangeThreeHours={this.handleChangeThreeHours}
+                  handleChangeSixHours={this.handleChangeSixHours}
+                  handleChangeTwelveHours={this.handleChangeTwelveHours}
 
                 />
               )}
