@@ -17,9 +17,13 @@
 
 
 ### Wireframes:
-
+Home page :
 ![home page](HomePage.png)
+
+Station Page:
 ![station page](station.png)
+
+User information and payment page :
 ![User page](userPage.png)
 
 
