@@ -1,118 +1,32 @@
 body {
   margin: 0;
-  font-family: serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+header {
+  height: 50px;
+  background-color: black;
+}
 .navBar {
   text-align: center;
-  background-color: #566573;
-  height: 50px;
 }
-h4,
-.stationName {
-  color: darkslategray;
-}
-button {
-  margin: 10px;
-  font-size: 20px;
-}
-.toBooking {
-  margin: 12px;
-  font-size: 17px;
-  font-family: Georgia, "Times New Roman", Times, serif;
-  border: 1px solid #dae1e2;
-  width: 490px;
+.styles {
+  border: 1px solid turquoise;
+  width: 300px;
+  height: 150px;
+  margin: 50px;
   border-radius: 5px;
-}
-.h4,
-h4 {
-  text-align: center;
-}
-.h44 {
-  font-size: 20px;
-}
-
-.carsName {
-  font-size: 20px;
-  color: #7f8c8d;
-  text-align: left;
-  width: 70px;
-}
-.allStation {
-  border: 1px solid black;
-  width: 350px;
-  height: 300px;
-  margin: 30px;
+  margin-bottom: 10px;
+  margin-right: 5px;
   display: inline-block;
   justify-content: space-between;
   text-align: center;
-}
-.img {
-  width: 100%;
-}
-.stationinfo {
-  border: 2px solid black;
-  width: 400px;
-  height: 350px;
-  margin: 100px 100px;
-  border-radius: 5px;
-  /* margin-bottom: 10px;
-  margin-right: 5px; */
-  position: relative;
-  text-align: center;
-  justify-self: end;
-  /* padding: 20px;
-  margin: auto; */
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-/* css header */
-.slide-container {
-  width: 70%;
-  margin: auto;
-}
-
-h3 {
-  text-align: center;
-}
-
-.each-slide > div {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-size: cover;
-  height: 300px;
-}
-
-.each-slide span {
-  padding: 20px;
-  font-size: 20px;
-  background: #efefef;
-  text-align: center;
-}
-
-.each-fade {
-  display: flex;
-}
-
-.each-fade .image-container {
-  width: 75%;
-  overflow: hidden;
-}
-
-.each-fade .image-container img {
-  width: 100%;
-}
-
-.each-fade h2 {
-  width: 25%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0;
-  background: #adceed;
 }

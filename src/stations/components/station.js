@@ -1,30 +1,28 @@
 import React from "react";
 import { Link } from "react-router-dom";
 class Station extends React.Component {
-  clickStaion = event => {
-    this.props.oneStaion(
-      this.props.name,
-      this.props.location,
-      this.props.cars,
-      this.props.id
-    );
-  };
-  render() {
-    return (
-      <div className="allStation">
-        <table>
-          <tr>
-            <br />
-            <Link to="/selected-station" onClick={this.clickStaion}>
-              <h4 className="navbar-brand">{this.props.name}</h4>
-            </Link>{" "}
-            <br />
-            <p className="h4">{this.props.location}</p> <br />
-          </tr>
-          {/* {this.props.id} */}
-        </table>
-      </div>
-    );
-  }
+    constructor(props) {
+        super(props);
+        this.state = {
+        }
+    }
+    clickStaion = (event) => {
+        // event.preventDefault();
+        //     // this.props.stationDetalis(this.props.id);
+        // console.log('hi',this.props.id )
+        // this.setState({stationName: this.props.name})
+        this.props.oneStaion(this.props.name, this.props.location, this.props.cars, this.props.id)
+    }
+    render() {
+        return (
+            <div className="styles">
+                <Link to="/selected-Station" onClick={this.clickStaion} >
+                    {this.props.name}
+                </Link> <br />
+                {this.props.location} <br />
+                {/* {this.props.id} */}
+            </div>
+        )
+    }
 }
 export default Station;
