@@ -1,5 +1,5 @@
 import React from 'react'
-// import Home from './home'
+
 
 
 class User extends React.Component {
@@ -16,7 +16,7 @@ class User extends React.Component {
         this.setState({
             showPopup: !this.state.showPopup
         });
-        // <Home />
+
     }
 
 
