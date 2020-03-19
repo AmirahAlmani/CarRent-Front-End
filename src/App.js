@@ -201,6 +201,7 @@ class App extends React.Component {
 
           <div>
             <Route exact path="/" component={Home} />
+
             <Route
               path="/AllStation"
               component={() => (

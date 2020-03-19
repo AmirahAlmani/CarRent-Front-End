@@ -21,7 +21,7 @@ button {
   font-size: 17px;
   font-family: Georgia, "Times New Roman", Times, serif;
   border: 1px solid #dae1e2;
-  width:490px;
+  width: 490px;
   border-radius: 5px;
 }
 .h4,
@@ -47,7 +47,9 @@ h4 {
   justify-content: space-between;
   text-align: center;
 }
-
+.img {
+  width: 100%;
+}
 .stationinfo {
   border: 2px solid black;
   width: 400px;
@@ -69,3 +71,48 @@ h4 {
 }
 
 /* css header */
+.slide-container {
+  width: 70%;
+  margin: auto;
+}
+
+h3 {
+  text-align: center;
+}
+
+.each-slide > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  height: 300px;
+}
+
+.each-slide span {
+  padding: 20px;
+  font-size: 20px;
+  background: #efefef;
+  text-align: center;
+}
+
+.each-fade {
+  display: flex;
+}
+
+.each-fade .image-container {
+  width: 75%;
+  overflow: hidden;
+}
+
+.each-fade .image-container img {
+  width: 100%;
+}
+
+.each-fade h2 {
+  width: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  background: #adceed;
+}
