@@ -1,13 +1,26 @@
 import React from "react";
-import Key from "./key";
 
 class User extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      showPopup: false,
+      random: Math.floor(Math.random() * 10000000) + 1
+    };
+  }
+  togglePopup = e => {
+    e.preventDefault();
+
+    this.setState({
+      showPopup: !this.state.showPopup
+    });
+  };
+
   render() {
     return (
       <div>
         <form className="toBooking">
           <lable>
-            {"  "}
             For how long do you need the car: ( <em>50 sr per hour </em>)
           </lable>
           <div class="form-check">
@@ -139,13 +152,39 @@ class User extends React.Component {
                 </div>
               </div>
             </div>
-            <button className="btn btn-light" onClick={this.props.submition}>
+            <button
+              className="btn btn-light"
+              onClick={this.props.submition}
+              onClick={this.togglePopup.bind(this)}
+            >
               submit
             </button>
           </div>
         </form>
+        {this.state.showPopup ? (
+          <Popup
+            random={this.state.random}
+            closePopup={this.togglePopup.bind(this)}
+          />
+        ) : null}
       </div>
     );
   }
 }
 export default User;
+class Popup extends React.Component {
+  render() {
+    return (
+      <div className="popup">
+        <div className="popup_inner">
+          <h2 randonNumber>Your Key Number</h2>
+          <p className="randonNumber">{this.props.random}</p>
+
+          <button className="btn btn-light" onClick={this.props.closePopup}>
+            close
+          </button>
+        </div>
+      </div>
+    );
+  }
+}

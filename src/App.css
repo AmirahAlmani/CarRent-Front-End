@@ -30,6 +30,8 @@ body,
   bottom: 0;
   margin: auto;
   background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0.8;
+  text-align: center;
 }
 .popup_inner {
   position: absolute;
@@ -39,4 +41,9 @@ body,
   bottom: 25%;
   margin: auto;
   background: white;
+  height: 200px;
+  text-align: center;
+}
+.randonNumber {
+  font-size: 30px;
 }
