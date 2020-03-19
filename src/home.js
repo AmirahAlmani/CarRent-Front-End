@@ -1,119 +1,27 @@
-import React from 'react';
-
-
-// class Home extends React.Component {
-//   render() {
-//     return (
-//       <div className='popup'>
-//         <div className='popup_inner'>
-//           <h1>{this.props.text}</h1>
-//           <button onClick={this.props.closePopup}>close me</button>
-//         </div>
-//       </div>
-//     );
-//   }
-// }
-// class Home extends React.Component {
-//   constructor() {
-//     super();
-//     this.handleClick = this.handleClick.bind(this);
-//     this.state = {
-//       showPopup: false
-
-//     };
-
-//   }
-//   togglePopup() {
-
-
-//     this.setState({
-//       showPopup: !this.state.showPopup
-//     });
-
-//   }
-
-//   handleClick() {
-
-//     const rand = Math.floor(Math.random() * 10000000) + 1;
-
-//     this.setState({ random: this.state.random + rand });
-//   }
-
-
-//   render() {
-//     return (
-//       <div className='app'>
-//         <h1>hihi</h1>
-//         <button onClick={this.togglePopup.bind(this)}>show popup</button>
-
-//         {this.state.showPopup ?
-//           <Popup
-//             text="{this.state.handleClick}"
-//             closePopup={this.togglePopup.bind(this)}
-//           />
-//           : null
-//         }
-//       </div>
-//     );
-//   }
-// };
-
-// export default Home;
-
-
-class Popup extends React.Component {
+import React from "react";
+import Slider from "react-slick";
+import img1 from "./5.jpg";
+class Home extends React.Component {
   render() {
+    const settings = {
+      dots: true,
+      // infinite: true,
+      speed: 500,
+      // slidesToShow: 1,
+      slidesToScroll: 1
+    };
     return (
-      <div className='popup'>
-        <div className='popup_inner'>
-          <h1>{this.props.text}</h1>
-          <button onClick={this.props.closePopup}>close me</button>
-        </div>
+      <div>
+        <Slider {...settings}>
+          <div>
+            <h3>
+              {" "}
+              <img className="img" src={img1} />{" "}
+            </h3>
+          </div>
+        </Slider>
       </div>
     );
   }
 }
-class Home extends React.Component {
-  constructor() {
-    super();
-    this.handleClick = this.handleClick.bind(this);
-    this.state = { random: 10000000 };
-
-    this.state = {
-      showPopup: false
-    };
-  }
-  togglePopup() {
-    this.setState({
-      showPopup: !this.state.showPopup
-    });
-  }
-
-  handleClick() {
-
-    const rand = Math.floor(Math.random() * 10000000) + 1;
-
-    this.setState({ random: this.state.random + rand });
-  }
-
-
-  render() {
-    return (
-      <div className='app'>
-        <h1>hihi</h1>
-        <button onClick={this.togglePopup.bind(this)}>show popup</button>
-
-        {this.state.showPopup ?
-          <Popup
-            text={this.handleClick}
-            closePopup={this.togglePopup.bind(this)}
-          />
-          : null
-        }
-      </div>
-    );
-  }
-};
-
-
 export default Home;
