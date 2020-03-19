@@ -20,7 +20,7 @@
 
 ![home page](HomePage.png)
 ![station page](station.png)
-![User page](user.png)
+![User page](userPage.png)
 
 
 ### List of technologies used in this project:
