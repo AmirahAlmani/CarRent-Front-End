@@ -1,7 +1,7 @@
-import React from "react";
-import Slider from "react-slick";
-import img1 from "./5.jpg";
+import React from 'react';
+
 class Home extends React.Component {
+
   render() {
     const settings = {
       dots: true,
@@ -11,17 +11,11 @@ class Home extends React.Component {
       slidesToScroll: 1
     };
     return (
-      <div>
-        <Slider {...settings}>
-          <div>
-            <h3>
-              {" "}
-              <img className="img" src={img1} />{" "}
-            </h3>
-          </div>
-        </Slider>
-      </div>
-    );
+      <>
+        <h2>Welcome to Car Rent</h2>
+      </>
+    )
   }
 }
+
 export default Home;

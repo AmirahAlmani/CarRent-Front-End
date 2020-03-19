@@ -1,6 +1,7 @@
-import React from "react";
-import "./App.css";
-import apiURL from "./apiConfig";
+import React from 'react';
+import './App.css';
+import './index.css'
+import apiURL from './apiConfig';
 import Home from "./home";
 import SelectedStation from "./stations/components/selectedStation";
 import User from "./stations/components/user";
@@ -194,7 +195,7 @@ class App extends React.Component {
               Home
             </Link>{" "}
             <Link className="navbar-brand" to="/AllStation">
-              Find a Station
+              Rent Now
             </Link>{" "}
             {/* <Link to="/User">User</Link> */}
           </nav>
