@@ -10,13 +10,6 @@ nav a {
   text-decoration: none;
   font-size: 30px;
 }
-a {
-  color: white;
-}
-
-/* nav a:hover:not(.active) {
-  background-color: #111;
-} */
 
 html,
 body,

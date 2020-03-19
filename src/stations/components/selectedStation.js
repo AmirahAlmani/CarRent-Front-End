@@ -22,7 +22,7 @@ class SelectedStation extends React.Component {
       });
   };
   render() {
-    let allCars = <p className="NoCar"> no Cars at this Station </p>;
+    let allCars = <p> no Cars at this Station </p>;
     console.log(this.props.cars);
     if (this.props.cars.length > 0) {
       allCars = this.props.cars.map((car, index) => {
@@ -41,10 +41,10 @@ class SelectedStation extends React.Component {
     return (
       <dev className="stationinfo">
         {/* <h2> station info </h2> */}
-        <h3>{this.props.stationName}</h3>
-        <sub className="h44">{this.props.stationLocation}</sub> <br />
-        <br />
-        <p className="NoCar">{allCars}</p>
+        <h3 className="stationName">{this.props.stationName}</h3>
+        <sub className="h44">{this.props.stationLocation}</sub>
+        <br></br>
+        <p className="navbar-brand">{allCars}</p>
       </dev>
     );
   }

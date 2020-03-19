@@ -8,12 +8,21 @@ body {
   background-color: #566573;
   height: 50px;
 }
-h4 {
+h4,
+.stationName {
   color: darkslategray;
 }
 button {
   margin: 10px;
   font-size: 20px;
+}
+.toBooking {
+  margin: 12px;
+  font-size: 17px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  border: 1px solid #dae1e2;
+  width:490px;
+  border-radius: 5px;
 }
 .h4,
 h4 {
@@ -22,8 +31,12 @@ h4 {
 .h44 {
   font-size: 20px;
 }
-.NoCar{
-  font-size: 16px;
+
+.carsName {
+  font-size: 20px;
+  color: #7f8c8d;
+  text-align: left;
+  width: 70px;
 }
 .allStation {
   border: 1px solid black;
@@ -38,7 +51,7 @@ h4 {
 .stationinfo {
   border: 2px solid black;
   width: 400px;
-  height: 400px;
+  height: 350px;
   margin: 100px 100px;
   border-radius: 5px;
   /* margin-bottom: 10px;
@@ -56,57 +69,3 @@ h4 {
 }
 
 /* css header */
-
-.slide_wrapper .camera_prev {
-  background: url(./img/b2ap3_large_zonda.jpg) 0 0 repeat;
-  width: 70px;
-  top: 0 !important;
-  height: auto !important;
-  bottom: 0;
-  left: -80px;
-  display: block;
-  position: absolute;
-  opacity: 1 !important;
-  transition: 0.5s ease;
-  -o-transition: 0.5s ease;
-  -webkit-transition: 0.5s ease;
-}
-
-.slide_wrapper > span {
-  background: url(./img/pexels-photo-244206.jpeg) center 0 no-repeat;
-  top: 50%;
-
-  margin-top: -10px;
-  position: absolute;
-  display: block;
-  height: 20px;
-  left: 0;
-  right: 0;
-}
-
-.slide_wrapper > span {
-  background: url(./img/images.jpeg) center 0 no-repeat;
-  top: 50%;
-  margin-top: -10px;
-  position: absolute;
-  display: block;
-  left: 0;
-  right: 0;
-  height: 20px;
-}
-
-.slide_wrapper {
-  background: url(./img/b2ap3_large_zonda.jpg) 0 0 repeat;
-  width: 70px;
-  top: 0 !important;
-  bottom: 0;
-  height: auto !important;
-
-  right: -80px;
-  display: block;
-  position: absolute;
-  opacity: 1 !important;
-  transition: 0.5s ease;
-  -o-transition: 0.5s ease;
-  -webkit-transition: 0.5s ease;
-}
