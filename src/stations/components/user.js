@@ -1,11 +1,64 @@
 import React from 'react'
+import Key from './key'
 
 
 class User extends React.Component {
+
+
+
     render() {
         return (
             <div>
                 <form>
+
+                    <lable>For how long do you need the car: (<em>50sr per hour</em>)</lable>
+                    <div class="form-check">
+                        <input
+                            onChange={this.props.handleChangeThreeHours}
+                            className="form-check-input"
+                            type="radio"
+                            name="exampleRadios"
+                            id="exampleRadios1"
+                            value="Three hours"
+                            checked={this.props.hours === "Three hours"}
+                        />
+                        <label class="form-check-label" for="exampleRadios1">
+                            3 hours ~ charge 150 SR
+            </label>
+                    </div>
+                    <div class="form-check">
+                        <input
+                            onChange={this.props.handleChangeSixHours}
+                            className="form-check-input"
+                            type="radio"
+                            name="exampleRadios"
+                            id="exampleRadios1"
+                            value="Six hours"
+                            checked={this.props.hours === "Six hours"}
+                        />
+                        <label class="form-check-label" for="exampleRadios1">
+                            6 hours ~ charge 300 SR
+            </label>
+                    </div>
+                    <div class="form-check">
+                        <input
+                            onChange={this.props.handleChangeTwelveHours}
+                            className="form-check-input"
+                            type="radio"
+                            name="exampleRadios"
+                            id="exampleRadios1"
+                            value="Twelve hours"
+                            checked={this.props.hours === "Twelve hours"}
+                        />
+                        <label class="form-check-label" for="exampleRadios1">
+                            12 hours ~ charge 600 SR
+            </label>
+                    </div>
+
+
+
+
+
 
                     <lable>Name:</lable>
                     <br></br>
@@ -78,18 +131,10 @@ class User extends React.Component {
 
 
 
-                    <button onClick={this.props.addNewUser}>submit</button>
+                    <button onClick={this.props.submition}>submit</button>
 
                 </form>
 
-                {/* <div>
-                    {this.props.addNewUser.map(item => {
-                        return (
-                            <p>{item}</p>
-                        )
-                    })}
-
-                </div> */}
 
             </div>
 

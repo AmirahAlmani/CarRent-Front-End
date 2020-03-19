@@ -9,5 +9,11 @@ const getAllCars = () => {
   return axios.get(`${apiURL}/cars`);
 };
 
-export { getAllStation, getAllCars };
-
+const addNewUser = (user) => {
+  console.log('addNewUser', user)
+  return axios.post(`${apiURL}/user`, user);
+}
+const deleteCarByID = (id, stationId) => {
+  return axios.delete(`${apiURL}/car/${id}/${stationId}`);
+}
+export { getAllStation, getAllCars, addNewUser, deleteCarByID };

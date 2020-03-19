@@ -1,17 +1,32 @@
 body {
   margin: 0;
-  font-size: 20px;
   font-family: serif;
 }
-header {
-  height: 50px;
-  background-color: black;
-}
+
 .navBar {
   text-align: center;
+  background-color: #566573;
+  height: 50px;
 }
-.styles {
-  border: 1px solid turquoise;
+h4 {
+  color: darkslategray;
+}
+button {
+  margin: 10px;
+  font-size: 20px;
+}
+.h4,
+h4 {
+  text-align: center;
+}
+.h44 {
+  font-size: 20px;
+}
+.NoCar{
+  font-size: 16px;
+}
+.allStation {
+  border: 1px solid black;
   width: 350px;
   height: 300px;
   margin: 30px;
@@ -19,6 +34,7 @@ header {
   justify-content: space-between;
   text-align: center;
 }
+
 .stationinfo {
   border: 2px solid black;
   width: 400px;
@@ -37,4 +53,60 @@ header {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+/* css header */
+
+.slide_wrapper .camera_prev {
+  background: url(./img/b2ap3_large_zonda.jpg) 0 0 repeat;
+  width: 70px;
+  top: 0 !important;
+  height: auto !important;
+  bottom: 0;
+  left: -80px;
+  display: block;
+  position: absolute;
+  opacity: 1 !important;
+  transition: 0.5s ease;
+  -o-transition: 0.5s ease;
+  -webkit-transition: 0.5s ease;
+}
+
+.slide_wrapper > span {
+  background: url(./img/pexels-photo-244206.jpeg) center 0 no-repeat;
+  top: 50%;
+
+  margin-top: -10px;
+  position: absolute;
+  display: block;
+  height: 20px;
+  left: 0;
+  right: 0;
+}
+
+.slide_wrapper > span {
+  background: url(./img/images.jpeg) center 0 no-repeat;
+  top: 50%;
+  margin-top: -10px;
+  position: absolute;
+  display: block;
+  left: 0;
+  right: 0;
+  height: 20px;
+}
+
+.slide_wrapper {
+  background: url(./img/b2ap3_large_zonda.jpg) 0 0 repeat;
+  width: 70px;
+  top: 0 !important;
+  bottom: 0;
+  height: auto !important;
+
+  right: -80px;
+  display: block;
+  position: absolute;
+  opacity: 1 !important;
+  transition: 0.5s ease;
+  -o-transition: 0.5s ease;
+  -webkit-transition: 0.5s ease;
 }

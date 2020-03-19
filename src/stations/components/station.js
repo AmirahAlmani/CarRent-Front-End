@@ -1,24 +1,28 @@
 import React from "react";
 import { Link } from "react-router-dom";
 class Station extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
   clickStaion = event => {
-
-    console.log("hi", this.props.id);
-   
-    this.props.oneStaion(this.props.name, this.props.location, this.props.cars);
+    this.props.oneStaion(
+      this.props.name,
+      this.props.location,
+      this.props.cars,
+      this.props.id
+    );
   };
   render() {
     return (
-      <div className="styles">
-        <Link to="/selected-Station" onClick={this.clickStaion}>
-          {this.props.name}
-        </Link>{" "}
-        <br />
-        {this.props.location} <br />
+      <div className="allStation">
+        <table>
+          <tr>
+            <br />
+            <Link to="/selected-station" onClick={this.clickStaion}>
+              <h4 className="navbar-brand">{this.props.name}</h4>
+            </Link>{" "}
+            <br />
+            <p className="h4">{this.props.location}</p> <br />
+          </tr>
+          {/* {this.props.id} */}
+        </table>
       </div>
     );
   }
