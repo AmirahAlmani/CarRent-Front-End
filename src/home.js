@@ -1,13 +1,14 @@
 import React from "react";
 import Slider from "react-slick";
 import img1 from "./5.jpg";
+import img2 from "./2.jpg";
 class Home extends React.Component {
   render() {
     const settings = {
       dots: true,
-      // infinite: true,
+      infinite: true,
       speed: 500,
-      // slidesToShow: 1,
+      slidesToShow: 1,
       slidesToScroll: 1
     };
     return (
@@ -17,6 +18,12 @@ class Home extends React.Component {
             <h3>
               {" "}
               <img className="img" src={img1} />{" "}
+            </h3>
+          </div>
+          <div>
+            <h3>
+              {" "}
+              <img className="img" src={img2} />{" "}
             </h3>
           </div>
         </Slider>
