@@ -20,11 +20,13 @@
 Home page :
 <br>
 ![home page](HomePage.png)
-
+<br>
 Station Page:
+<br>
 ![station page](station.png)
-
+<br>
 User information and payment page :
+<br>
 ![User page](userPage.png)
 
 
